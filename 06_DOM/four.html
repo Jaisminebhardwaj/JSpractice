@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+</head>
+<body  style = "background-color: black; color: white;">
+    <ul class = "Language">
+        <li>JavaScript</li>
+       
+    </ul>
+</body>
+<script>
+    // function addLanguage(langName){ (traverse the whole tree which is inefficient)
+    //     const li = document.createElement('li');
+    //     li.innerHTML = langName; (traversing)
+    //     document.querySelector('.Language').appendChild(li);
+        
+    // }
+    function addOptiizedLang(LangName){
+        const li = document.createElement('li');
+        const addText = document.createTextNode(LangName);
+        li.appendChild(addText);
+        document.querySelector('.Language').appendChild(li);
+    }
+    addOptiizedLang("Python");
+    addOptiizedLang("C++");
+    addOptiizedLang("Ruby");
+
+    //edit
+    const secondLang = document.querySelector('li:nth-child(3)');
+    // secondLang.innerHTML = "Java";
+    const newLi = document.createElement('li');
+    newLi.textContent = "Java";
+    secondLang.replaceWith(newLi);
+
+    //edit 
+    const firstLang = document.querySelector('li:nth-child(1)');
+    firstLang.outerHTML= "<li>TypeScript</li>"
+
+    //remove
+    const lastLang = document.querySelector('li:last-child');
+    lastLang.remove();
+</script>
+</html>
