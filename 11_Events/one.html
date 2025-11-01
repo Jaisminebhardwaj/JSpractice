@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="cat" src="https://th.bing.com/th/id/OIP.bqXsLtwY-JftrDbHAn7JuwHaEo?w=206&h=150&c=6&o=7&dpr=3&pid=1.7&rm=3" alt="photoshop"></li>
+            <li><img width="200px" id="lion" src="https://images.pexels.com/photos/247502/pexels-photo-247502.jpeg?auto=compress&w=400&h=300" alt=""></li>
+            <li><img width="200px" id="dog" src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&w=400&h=300" alt=""></li>
+            <li><img width="200px" id="horse" src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="" ></li>
+            <li><img width="200px" id="monkey" src="https://images.unsplash.com/photo-1518156561-d0491d1ae59c?auto=format&fit=crop&w=400&q=80" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+<script>
+    // document.getElementById('cat').onclick = function(){
+    //     alert('You clicked on Cat image');
+    // }; --------------- not a good approach , gives less features
+
+    //attachEvent()
+    //jQuery - on 
+
+    //type --> the event type
+    //timestamp --> gives you time , when the event occurred(in miliseconds)
+    //Defaultprevented --> some events have default behaviour , this property tells whether the default behaviour is prevented or not
+    //target --> tells you which element triggered the event or refers to the actual DOM element that triggered the event
+    //CurrentTarget --> refers to the element to which the event handler is attached
+    //toElement() --> gives you the element on which the event occurred
+    //tagName --> gives you the tag name of the element on which the event occurred(img,LI)
+
+
+    document.getElementById('cat').addEventListener('click', function(){
+    //     // alert('You clicked on Cat image');
+    } , false);
+
+    document.getElementById('dog').addEventListener('click', function(e){
+        // console.log(e);
+        // console.log(e.timeStamp)
+        // console.log(e.target);
+    });
+
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log('You clicked inside the ul');
+    }, false);
+    document.getElementById('dog').addEventListener('click', function(e){
+        console.log('dog clicked');
+        // e.stopPropagation();
+    },false); //(false --> bubbling phase , True --> capturing phase) event propagation
+
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault(); //prevents the default behaviour of an event
+        e.stopPropagation(); //stop the event propagation
+        console.log('default behaviour prevented');
+    });
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        // console.log(e.target.parentNode)
+        console.log(e.target.tagName)
+        if (e.target.tagName === 'IMG'){
+            let imgs = e.target.parentNode;
+            // imgs.remove();
+        imgs.parentNode.removeChild(imgs);
+        }
+    },false);
+
+
+
+</script>
+</body>
+</html>
