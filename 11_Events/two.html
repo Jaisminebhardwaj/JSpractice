@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JavaScript</h1>
+    <button id="stop">Click Me!</button>
+</body>
+<script>
+    // setTimeout(function(){
+    //     console.log("Hello after 3 seconds");
+    // }, 3000);
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "jaismine Bhardwaj"
+    }
+    // setTimeout(changeText, 2000);
+
+    const changeMe = setTimeout(changeText, 2000);
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe);
+        console.log("You stopped me!");
+    });
+</script>
+</html>
