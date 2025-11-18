@@ -1,0 +1,31 @@
+<!-- bind keyword  ==>  fixes the value of this inside handleClick so it refers to the user instance (so this.server is the instance property) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button clicked</button>
+</body>
+<script>
+    class user{
+        constructor(){
+            this.library = "react"
+            this.server = "http://localhost:3000"
+
+            //requirement
+            document
+            .querySelector("button")
+            .addEventListener("click", this.handleClick.bind(this));
+        }
+        handleClick(){
+            console.log(`the method handleClick called `);
+            console.log(this.server)
+        }
+    }
+    const app = new user();
+</script>
+</html>
